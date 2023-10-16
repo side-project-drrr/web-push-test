@@ -7,8 +7,11 @@ git clone
 
 ### package down
 
-```npm i
+```
+npm i
 ```
 ### start
 
-``` npm run dev
+```
+npm run dev
+```
