@@ -96,6 +96,7 @@ function subscribeUser() {
     })
     .then(function (subscription) {
       console.log("User is subscribed.");
+      console.log(456);
       pushService(subscription);
 
       updateSubscriptionOnServer(subscription);
