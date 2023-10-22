@@ -16,7 +16,7 @@ function App() {
         <p>
           <button
             className="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
-            onClick={initializeUI}
+            onClick={() => initializeUI}
           >
             구독
           </button>

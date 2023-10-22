@@ -1,4 +1,4 @@
-//import { pushService } from "../service/webpushService";
+import { pushDeleteService, pushService } from "../service/webpushService";
 import { VAPID_PUBLIC_KEY } from "./constants";
 
 const pushButton = document.querySelector(".js-push-btn");
@@ -47,7 +47,6 @@ export function initializeUI() {
     console.log("구독 취소");
   } else {
     subscribeUser();
-    //pushService();
   }
 
   // Set the initial subscription value
@@ -71,6 +70,7 @@ export const unsubscribeUser = () => {
     .getSubscription()
     .then(function (subscription) {
       if (subscription) {
+        pushDeleteService(subscription);
         return subscription.unsubscribe();
       }
     })
@@ -89,7 +89,6 @@ export const unsubscribeUser = () => {
 
 function subscribeUser() {
   const applicationServerKey = urlB64ToUint8Array(VAPID_PUBLIC_KEY);
-  console.log(applicationServerKey);
   swRegistration.pushManager
     .subscribe({
       userVisibleOnly: true,
@@ -97,6 +96,7 @@ function subscribeUser() {
     })
     .then(function (subscription) {
       console.log("User is subscribed.");
+      pushService(subscription);
 
       updateSubscriptionOnServer(subscription);
 
@@ -141,7 +141,6 @@ function updateBtn() {
 
 navigator.serviceWorker.register("src/sw.js").then(function (swReg) {
   console.log("Service Worker is registered", swReg);
-
   swRegistration = swReg;
   initializeUI();
 });
