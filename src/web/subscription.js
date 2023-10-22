@@ -1,4 +1,4 @@
-"use strict";
+import { pushService } from "../service/webpushService";
 import { VAPID_PUBLIC_KEY } from "./constants";
 
 const pushButton = document.querySelector(".js-push-btn");
@@ -27,7 +27,6 @@ export function servicePushManager() {
       .register("src/sw.js")
       .then(function (swReg) {
         console.log("Service Worker is registered", swReg);
-
         swRegistration = swReg;
       })
       .catch(function (error) {
@@ -44,9 +43,11 @@ export function initializeUI() {
 
   if (isSubscribed) {
     // TODO: Unsubscribe user
-    unsubscribeUser();
+    //unsubscribeUser();
+    console.log("구독 취소");
   } else {
     subscribeUser();
+    pushService();
   }
 
   // Set the initial subscription value
@@ -65,7 +66,8 @@ export function initializeUI() {
   });
 }
 
-function unsubscribeUser() {
+export const unsubscribeUser = () => {
+  console.log(123);
   swRegistration.pushManager
     .getSubscription()
     .then(function (subscription) {
@@ -84,7 +86,7 @@ function unsubscribeUser() {
 
       updateBtn();
     });
-}
+};
 
 function subscribeUser() {
   const applicationServerKey = urlB64ToUint8Array(VAPID_PUBLIC_KEY);

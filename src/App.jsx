@@ -1,4 +1,5 @@
 import { initializeUI } from "../src/web/subscription";
+import { unsubscribeUser } from "../src/web/subscription";
 
 function App() {
   return (
@@ -15,9 +16,15 @@ function App() {
         <p>
           <button
             className="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
-            onClick={() => initializeUI}
+            onClick={initializeUI}
           >
             Enable Push Messaging
+          </button>
+          <button
+            className="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
+            onClick={unsubscribeUser}
+          >
+            귀독 취소
           </button>
         </p>
         <section className="subscription-details js-subscription-details is-invisible">
