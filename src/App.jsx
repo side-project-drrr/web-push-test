@@ -18,7 +18,7 @@ function App() {
             className="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"
             onClick={initializeUI}
           >
-            Enable Push Messaging
+            구독
           </button>
           <button
             className="js-push-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"

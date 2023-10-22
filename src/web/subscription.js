@@ -1,4 +1,4 @@
-import { pushService } from "../service/webpushService";
+//import { pushService } from "../service/webpushService";
 import { VAPID_PUBLIC_KEY } from "./constants";
 
 const pushButton = document.querySelector(".js-push-btn");
@@ -47,7 +47,7 @@ export function initializeUI() {
     console.log("구독 취소");
   } else {
     subscribeUser();
-    pushService();
+    //pushService();
   }
 
   // Set the initial subscription value
@@ -67,7 +67,6 @@ export function initializeUI() {
 }
 
 export const unsubscribeUser = () => {
-  console.log(123);
   swRegistration.pushManager
     .getSubscription()
     .then(function (subscription) {
