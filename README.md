@@ -1,17 +1,13 @@
 ## web-push test repo
 
+npm install
+### firebase 다운로드
 
-### 실행 방법
+npm install firebase
 
-git clone
 
 ### package down
 
 ```
-npm i
-```
-### start
-
-```
-npm run dev
+npm start
 ```
